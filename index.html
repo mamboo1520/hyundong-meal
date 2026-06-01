@@ -335,7 +335,8 @@
 <script>
 const API_KEY = 'caec08521bf5421e8e86ebbc6a4a7d8c';
 const ATPT = 'J10';
-const SCHUL_CODE = '7380292';
+const SCHUL_NAME = '현동초등학교';
+let SCHUL_CODE = null;
 const MEAL_TYPES = {
   '1': { label: '조식', icon: 'ti-sun' },
   '2': { label: '중식', icon: 'ti-coffee' },
@@ -481,7 +482,24 @@ async function render() {
   }
 }
 
-render();
+async function initSchoolCode() {
+  try {
+    const url = `https://open.neis.go.kr/hub/schoolInfo?KEY=${API_KEY}&Type=json&ATPT_OFCDC_SC_CODE=${ATPT}&SCHUL_NM=${encodeURIComponent(SCHUL_NAME)}&pSize=10&pIndex=1`;
+    const res = await fetch(url);
+    const json = await res.json();
+    const rows = json?.schoolInfo?.[1]?.row;
+    if (rows && rows.length > 0) {
+      const matched = rows.find(r => r.SCHUL_NM === SCHUL_NAME) || rows[0];
+      SCHUL_CODE = matched.SD_SCHUL_CODE;
+    }
+  } catch(e) {}
+  if (!SCHUL_CODE) {
+    SCHUL_CODE = '7380058';
+  }
+  render();
+}
+
+initSchoolCode();
 </script>
 </body>
 </html>
