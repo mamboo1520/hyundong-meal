@@ -10,33 +10,40 @@
 
   :root {
     --bg-primary: #ffffff;
-    --bg-secondary: #f5f4f0;
+    --bg-secondary: #f7f6f3;
     --bg-tertiary: #eeedea;
     --text-primary: #1a1a18;
     --text-secondary: #6b6b67;
     --text-tertiary: #a0a09c;
-    --border: rgba(0,0,0,0.12);
-    --border-md: rgba(0,0,0,0.2);
-    --radius-md: 8px;
-    --radius-lg: 12px;
+    --border: rgba(0,0,0,0.10);
+    --border-md: rgba(0,0,0,0.18);
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    --accent: #e8701a;
+    --accent-bg: #fdf3eb;
+    --accent-border: rgba(232,112,26,0.2);
     --danger-bg: #fcebeb;
     --danger-text: #a32d2d;
-    --danger-border: rgba(163,45,45,0.25);
+    --danger-border: rgba(163,45,45,0.2);
   }
 
   @media (prefers-color-scheme: dark) {
     :root {
       --bg-primary: #1e1e1c;
-      --bg-secondary: #2a2a28;
-      --bg-tertiary: #333331;
+      --bg-secondary: #262624;
+      --bg-tertiary: #2e2e2c;
       --text-primary: #f0efea;
       --text-secondary: #9a9a96;
       --text-tertiary: #6a6a66;
-      --border: rgba(255,255,255,0.1);
-      --border-md: rgba(255,255,255,0.2);
+      --border: rgba(255,255,255,0.09);
+      --border-md: rgba(255,255,255,0.18);
+      --accent: #f08040;
+      --accent-bg: #2a1e10;
+      --accent-border: rgba(240,128,64,0.2);
       --danger-bg: #2d1a1a;
       --danger-text: #f09595;
-      --danger-border: rgba(240,149,149,0.2);
+      --danger-border: rgba(240,149,149,0.18);
     }
   }
 
@@ -45,114 +52,127 @@
     background: var(--bg-secondary);
     color: var(--text-primary);
     min-height: 100vh;
-    padding: 1.5rem 1rem;
+    padding: 1.5rem 1rem 2rem;
   }
 
-  .wrap {
-    max-width: 560px;
-    margin: 0 auto;
-  }
+  .wrap { max-width: 540px; margin: 0 auto; }
 
   .school-header {
     display: flex;
     align-items: center;
     gap: 14px;
-    margin-bottom: 1.75rem;
+    margin-bottom: 1.5rem;
     background: var(--bg-primary);
-    border: 0.5px solid var(--border);
-    border-radius: var(--radius-lg);
+    border: 0.5px solid var(--border-md);
+    border-radius: var(--radius-xl);
     padding: 1rem 1.25rem;
   }
 
-  .school-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: var(--radius-md);
-    background: var(--bg-secondary);
-    border: 0.5px solid var(--border);
+  .school-emblem {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-lg);
+    background: var(--accent-bg);
+    border: 0.5px solid var(--accent-border);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
-    color: var(--text-secondary);
+    font-size: 26px;
     flex-shrink: 0;
   }
 
-  .school-name { font-size: 18px; font-weight: 600; color: var(--text-primary); }
-  .school-sub { font-size: 13px; color: var(--text-secondary); margin-top: 2px; }
+  .school-name { font-size: 17px; font-weight: 600; color: var(--text-primary); letter-spacing: -0.02em; }
+  .school-sub { font-size: 12px; color: var(--text-secondary); margin-top: 3px; display: flex; align-items: center; gap: 4px; }
 
   .top-bar {
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 1.25rem;
-    flex-wrap: wrap;
+    margin-bottom: 1rem;
   }
 
   .date-nav {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
     flex: 1;
     min-width: 0;
-  }
-
-  .date-nav button, .view-toggle button, .week-tab {
     background: var(--bg-primary);
-    border: 0.5px solid var(--border);
+    border: 0.5px solid var(--border-md);
     border-radius: var(--radius-md);
-    padding: 7px 13px;
-    font-size: 13px;
+    padding: 5px 7px;
+  }
+
+  .nav-btn {
+    background: none;
+    border: none;
+    padding: 5px 7px;
     cursor: pointer;
-    color: var(--text-primary);
+    color: var(--text-secondary);
+    border-radius: 7px;
     font-family: inherit;
-    transition: background 0.15s;
+    transition: background 0.12s;
+    display: flex;
+    align-items: center;
   }
+  .nav-btn:hover { background: var(--bg-tertiary); color: var(--text-primary); }
 
-  .date-nav button:hover, .view-toggle button:hover:not(.active), .week-tab:hover:not(.active) {
-    background: var(--bg-tertiary);
-  }
-
-  .date-nav .nav-btn { padding: 7px 10px; }
   .date-display {
     flex: 1;
     text-align: center;
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 13.5px;
+    font-weight: 600;
     color: var(--text-primary);
+    letter-spacing: -0.01em;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
+  .today-btn {
+    background: none;
+    border: 0.5px solid var(--border-md);
+    border-radius: 7px;
+    padding: 5px 10px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.12s;
+  }
+  .today-btn:hover { background: var(--bg-tertiary); color: var(--text-primary); }
+
   .view-toggle {
     display: flex;
-    gap: 3px;
     background: var(--bg-primary);
-    border: 0.5px solid var(--border);
+    border: 0.5px solid var(--border-md);
     border-radius: var(--radius-md);
-    padding: 3px;
+    padding: 4px;
+    gap: 2px;
     flex-shrink: 0;
   }
 
-  .view-toggle button {
+  .view-btn {
+    background: none;
     border: none;
-    background: transparent;
-    border-radius: 6px;
-    padding: 4px 10px;
+    border-radius: 7px;
+    padding: 5px 11px;
     font-size: 12px;
     color: var(--text-secondary);
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.12s;
+    font-weight: 500;
   }
 
-  .view-toggle button.active {
-    background: var(--bg-secondary);
-    color: var(--text-primary);
-    border: 0.5px solid var(--border);
+  .view-btn.active {
+    background: var(--accent);
+    color: #fff;
   }
 
   .week-tabs {
     display: none;
-    gap: 4px;
+    gap: 5px;
     margin-bottom: 1rem;
     overflow-x: auto;
     padding-bottom: 2px;
@@ -163,9 +183,16 @@
 
   .week-tab {
     flex-shrink: 0;
-    font-size: 12px;
-    padding: 5px 12px;
+    background: var(--bg-primary);
+    border: 0.5px solid var(--border-md);
+    border-radius: var(--radius-md);
+    padding: 6px 13px;
+    font-size: 12.5px;
+    font-weight: 500;
     color: var(--text-secondary);
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.12s;
   }
 
   .week-tab.active {
@@ -173,101 +200,128 @@
     color: var(--bg-primary);
     border-color: var(--text-primary);
   }
+  .week-tab.today-tab { color: var(--accent); }
+  .week-tab.today-tab.active { background: var(--text-primary); color: var(--bg-primary); }
 
   .meal-card {
     background: var(--bg-primary);
-    border: 0.5px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 1.1rem 1.25rem;
+    border: 0.5px solid var(--border-md);
+    border-radius: var(--radius-xl);
     margin-bottom: 0.75rem;
+    overflow: hidden;
   }
 
-  .meal-type {
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin-bottom: 0.75rem;
+  .meal-card-header {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
+    padding: 0.9rem 1.2rem 0.7rem;
+    border-bottom: 0.5px solid var(--border);
   }
 
-  .meal-items { display: flex; flex-direction: column; }
+  .meal-emoji {
+    font-size: 22px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .meal-label {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: var(--text-primary);
+  }
+
+  .meal-label-sub {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-top: 1px;
+    font-weight: 400;
+  }
+
+  .cal-badge {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    background: var(--accent-bg);
+    border: 0.5px solid var(--accent-border);
+    border-radius: 99px;
+    padding: 3px 9px;
+    font-size: 11.5px;
+    color: var(--accent);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .meal-body { padding: 0.6rem 1.2rem 0.9rem; }
 
   .meal-item {
-    font-size: 15px;
-    color: var(--text-primary);
-    padding: 5px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 6px 0;
     border-bottom: 0.5px solid var(--border);
-    line-height: 1.4;
+    font-size: 14.5px;
+    color: var(--text-primary);
+    line-height: 1.45;
   }
 
   .meal-item:last-child { border-bottom: none; }
 
-  .allergy-info {
-    font-size: 10px;
-    color: var(--text-tertiary);
-    margin-left: 4px;
+  .item-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--border-md);
+    flex-shrink: 0;
+    margin-top: 7px;
   }
 
-  .cal-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
+  .item-name { flex: 1; }
+
+  .allergy-pill {
+    font-size: 10px;
+    color: var(--text-tertiary);
     background: var(--bg-secondary);
     border: 0.5px solid var(--border);
     border-radius: 99px;
-    padding: 3px 10px;
-    font-size: 12px;
-    color: var(--text-secondary);
-    margin-top: 10px;
+    padding: 1px 6px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 3px;
+    line-height: 1.6;
   }
 
   .empty-state {
     text-align: center;
-    padding: 3rem 1rem;
+    padding: 3.5rem 1rem;
     background: var(--bg-primary);
-    border: 0.5px solid var(--border);
-    border-radius: var(--radius-lg);
+    border: 0.5px solid var(--border-md);
+    border-radius: var(--radius-xl);
     color: var(--text-secondary);
   }
+  .empty-icon { font-size: 40px; margin-bottom: 14px; }
+  .empty-title { font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 5px; }
+  .empty-sub { font-size: 13px; color: var(--text-secondary); }
 
-  .empty-state i {
-    font-size: 36px;
-    color: var(--text-tertiary);
-    display: block;
-    margin-bottom: 12px;
-  }
-
-  .empty-state .em-title {
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--text-primary);
-    margin-bottom: 5px;
-  }
-
-  .loading-row {
+  .loading-wrap {
     display: flex;
     gap: 10px;
     align-items: center;
-    padding: 2rem;
-    color: var(--text-secondary);
-    font-size: 14px;
     justify-content: center;
+    padding: 2.5rem;
+    color: var(--text-secondary);
+    font-size: 13.5px;
   }
 
   .spinner {
-    width: 18px;
-    height: 18px;
+    width: 18px; height: 18px;
     border: 2px solid var(--border-md);
-    border-top-color: var(--text-secondary);
+    border-top-color: var(--accent);
     border-radius: 50%;
-    animation: spin 0.7s linear infinite;
-    flex-shrink: 0;
+    animation: spin 0.65s linear infinite;
   }
-
   @keyframes spin { to { transform: rotate(360deg); } }
 
   .error-box {
@@ -282,68 +336,87 @@
     gap: 8px;
   }
 
-  .api-notice {
+  .footer-note {
     font-size: 11px;
     color: var(--text-tertiary);
     text-align: center;
     margin-top: 1.5rem;
-    padding-bottom: 1rem;
   }
+  .footer-note a { color: var(--text-tertiary); text-decoration: none; }
+  .footer-note a:hover { color: var(--text-secondary); }
 
-  .api-notice a { color: var(--text-secondary); text-decoration: none; }
-  .api-notice a:hover { text-decoration: underline; }
-
-  @media (max-width: 420px) {
-    body { padding: 1rem 0.75rem; }
-    .school-name { font-size: 16px; }
-    .date-display { font-size: 13px; }
+  @media (max-width: 400px) {
+    body { padding: 1rem 0.65rem 2rem; }
+    .meal-label { font-size: 12.5px; }
   }
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="school-header">
-    <div class="school-icon"><i class="ti ti-school"></i></div>
+    <div class="school-emblem">🏫</div>
     <div>
-      <div class="school-name">현동초등학교</div>
-      <div class="school-sub">경상남도 창원시 · 초등학교</div>
+      <div class="school-name">현동초등학교 급식</div>
+      <div class="school-sub"><i class="ti ti-map-pin" style="font-size:12px;" aria-hidden="true"></i> 경상남도 창원시 · 초등학교</div>
     </div>
   </div>
 
   <div class="top-bar">
     <div class="date-nav">
-      <button class="nav-btn" onclick="changeDate(-1)" aria-label="이전"><i class="ti ti-chevron-left"></i></button>
+      <button class="nav-btn" onclick="changeDate(-1)" aria-label="이전"><i class="ti ti-chevron-left" style="font-size:16px;"></i></button>
       <div class="date-display" id="dateDisplay"></div>
-      <button class="nav-btn" onclick="changeDate(1)" aria-label="다음"><i class="ti ti-chevron-right"></i></button>
-      <button onclick="goToday()">오늘</button>
+      <button class="nav-btn" onclick="changeDate(1)" aria-label="다음"><i class="ti ti-chevron-right" style="font-size:16px;"></i></button>
+      <button class="today-btn" onclick="goToday()">오늘</button>
     </div>
     <div class="view-toggle">
-      <button id="btnDay" class="active" onclick="setView('day')">일간</button>
-      <button id="btnWeek" onclick="setView('week')">주간</button>
+      <button class="view-btn active" id="btnDay" onclick="setView('day')">일간</button>
+      <button class="view-btn" id="btnWeek" onclick="setView('week')">주간</button>
     </div>
   </div>
 
   <div class="week-tabs" id="weekTabs"></div>
   <div id="mealContainer"></div>
 
-  <div class="api-notice">
-    나이스 교육정보 개방 포털 데이터 제공 ·
-    <a href="https://open.neis.go.kr" target="_blank" rel="noopener">open.neis.go.kr</a>
-  </div>
+  <div class="footer-note">나이스 교육정보 개방 포털 데이터 제공 · <a href="https://open.neis.go.kr" target="_blank" rel="noopener">open.neis.go.kr</a></div>
 </div>
 
 <script>
 const API_KEY = 'caec08521bf5421e8e86ebbc6a4a7d8c';
-const ATPT = 'S10';
+const ATPT = 'J10';
 const SCHUL_NAME = '현동초등학교';
 let SCHUL_CODE = null;
-const MEAL_TYPES = {
-  '1': { label: '조식', icon: 'ti-sun' },
-  '2': { label: '중식', icon: 'ti-coffee' },
-  '3': { label: '석식', icon: 'ti-moon' }
-};
-const DAYS = ['일','월','화','수','목','금','토'];
 
+const MEAL_CONFIG = {
+  '1': { label: '조식', sub: '아침', emoji: '🌅' },
+  '2': { label: '중식', sub: '점심', emoji: '🍱' },
+  '3': { label: '석식', sub: '저녁', emoji: '🌙' }
+};
+
+const FOOD_EMOJI = {
+  '밥': '🍚', '쌀': '🍚', '죽': '🥣', '국': '🍲', '찌개': '🍲', '탕': '🍲',
+  '라면': '🍜', '국수': '🍜', '스파게티': '🍝', '파스타': '🍝',
+  '빵': '🥖', '토스트': '🍞', '떡': '🍡',
+  '김치': '🥢', '볶음': '🥘', '구이': '🔥', '튀김': '🍤', '전': '🥞',
+  '샐러드': '🥗', '야채': '🥦', '채소': '🥦', '과일': '🍎',
+  '닭': '🍗', '소고기': '🥩', '돼지': '🥩', '고기': '🥩',
+  '생선': '🐟', '새우': '🍤', '오징어': '🦑', '조개': '🦪',
+  '달걀': '🥚', '계란': '🥚', '두부': '🫘',
+  '우유': '🥛', '요거트': '🥛', '치즈': '🧀',
+  '케이크': '🎂', '과자': '🍪', '푸딩': '🍮',
+  '수프': '🥣', '카레': '🍛', '피자': '🍕', '햄버거': '🍔',
+  '핫도그': '🌭', '샌드위치': '🥪',
+  '포도': '🍇', '사과': '🍎', '바나나': '🍌', '오렌지': '🍊',
+  '수박': '🍉', '딸기': '🍓', '복숭아': '🍑',
+};
+
+function getFoodEmoji(name) {
+  for (const [kw, em] of Object.entries(FOOD_EMOJI)) {
+    if (name.includes(kw)) return em;
+  }
+  return null;
+}
+
+const DAYS = ['일','월','화','수','목','금','토'];
 let currentDate = new Date();
 let viewMode = 'day';
 let cache = {};
@@ -358,8 +431,8 @@ function fmtDisplay(d) {
 }
 
 function fmtShort(d) {
-  const today = fmtDate(new Date()) === fmtDate(d);
-  return `${d.getMonth()+1}/${d.getDate()} (${DAYS[d.getDay()]})${today ? ' ●' : ''}`;
+  const isToday = fmtDate(new Date()) === fmtDate(d);
+  return `${d.getMonth()+1}/${d.getDate()} ${DAYS[d.getDay()]}${isToday ? ' ·오늘' : ''}`;
 }
 
 function getMon(d) {
@@ -370,18 +443,11 @@ function getMon(d) {
 }
 
 function changeDate(delta) {
-  if (viewMode === 'day') {
-    currentDate.setDate(currentDate.getDate() + delta);
-  } else {
-    currentDate.setDate(currentDate.getDate() + delta * 7);
-  }
+  currentDate.setDate(currentDate.getDate() + delta * (viewMode === 'week' ? 7 : 1));
   render();
 }
 
-function goToday() {
-  currentDate = new Date();
-  render();
-}
+function goToday() { currentDate = new Date(); render(); }
 
 function setView(v) {
   viewMode = v;
@@ -410,7 +476,7 @@ function parseDish(ddishNm) {
   return ddishNm.split('<br/>').map(item => {
     const clean = item.replace(/\s*\([\d.]+\)/g, '').trim();
     const allergyMatch = item.match(/\(([\d.]+)\)/g);
-    return { name: clean, allergy: allergyMatch ? allergyMatch.join('') : '' };
+    return { name: clean, allergy: allergyMatch ? allergyMatch.join(' ') : '' };
   }).filter(d => d.name);
 }
 
@@ -419,26 +485,43 @@ function renderMeals(rows, container) {
     container.innerHTML = `<div class="error-box"><i class="ti ti-alert-circle"></i> 급식 정보를 가져오는 중 오류가 발생했습니다.</div>`;
     return;
   }
-  if (rows.length === 0) {
+  if (!rows.length) {
     container.innerHTML = `
       <div class="empty-state">
-        <i class="ti ti-bowl-chopsticks"></i>
-        <div class="em-title">급식 정보 없음</div>
-        <div>이 날은 급식이 없거나 정보가 등록되지 않았습니다.</div>
+        <div class="empty-icon">🍽️</div>
+        <div class="empty-title">급식 정보 없음</div>
+        <div class="empty-sub">이 날은 급식이 없거나<br>정보가 등록되지 않았습니다.</div>
       </div>`;
     return;
   }
+
   container.innerHTML = rows.map(row => {
-    const mt = MEAL_TYPES[row.MMEAL_SC_CODE] || { label: '기타', icon: 'ti-utensils' };
+    const cfg = MEAL_CONFIG[row.MMEAL_SC_CODE] || { label: '기타', sub: '', emoji: '🍴' };
     const dishes = parseDish(row.DDISH_NM);
     const cal = row.CAL_INFO ? row.CAL_INFO.trim() : null;
+
     return `
       <div class="meal-card">
-        <div class="meal-type"><i class="ti ${mt.icon}"></i>${mt.label}</div>
-        <div class="meal-items">
-          ${dishes.map(d => `<div class="meal-item">${d.name}<span class="allergy-info">${d.allergy}</span></div>`).join('')}
+        <div class="meal-card-header">
+          <div class="meal-emoji">${cfg.emoji}</div>
+          <div>
+            <div class="meal-label">${cfg.label}</div>
+            <div class="meal-label-sub">${cfg.sub}</div>
+          </div>
+          ${cal ? `<div class="cal-badge"><i class="ti ti-flame" style="font-size:12px;" aria-hidden="true"></i>${cal}</div>` : ''}
         </div>
-        ${cal ? `<div class="cal-badge"><i class="ti ti-flame" style="font-size:12px;"></i>${cal}</div>` : ''}
+        <div class="meal-body">
+          ${dishes.map(d => {
+            const emoji = getFoodEmoji(d.name);
+            return `<div class="meal-item">
+              ${emoji
+                ? `<span style="font-size:16px;line-height:1;flex-shrink:0;margin-top:2px;">${emoji}</span>`
+                : `<div class="item-dot"></div>`}
+              <span class="item-name">${d.name}</span>
+              ${d.allergy ? `<span class="allergy-pill">${d.allergy}</span>` : ''}
+            </div>`;
+          }).join('')}
+        </div>
       </div>`;
   }).join('');
 }
@@ -447,8 +530,7 @@ function selectWeekDay(btn, idx) {
   document.querySelectorAll('.week-tab').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   const d = weekDatesRef[idx];
-  const rows = cache[fmtDate(d)];
-  renderMeals(rows, document.getElementById('mealContainer'));
+  renderMeals(cache[fmtDate(d)], document.getElementById('mealContainer'));
 }
 
 async function render() {
@@ -457,7 +539,7 @@ async function render() {
 
   if (viewMode === 'day') {
     document.getElementById('dateDisplay').textContent = fmtDisplay(currentDate);
-    container.innerHTML = '<div class="loading-row"><div class="spinner"></div> 급식 정보를 불러오는 중...</div>';
+    container.innerHTML = '<div class="loading-wrap"><div class="spinner"></div> 급식 정보 불러오는 중…</div>';
     const rows = await fetchMeal(fmtDate(currentDate));
     renderMeals(rows, container);
   } else {
@@ -468,17 +550,17 @@ async function render() {
       return d;
     });
     weekDatesRef = weekDates;
+    const todayStr = fmtDate(new Date());
 
     document.getElementById('dateDisplay').textContent = `${mon.getMonth()+1}월 ${mon.getDate()}일 주`;
-    weekTabsEl.innerHTML = weekDates.map((d, i) =>
-      `<button class="week-tab ${i === 0 ? 'active' : ''}" onclick="selectWeekDay(this, ${i})">${fmtShort(d)}</button>`
-    ).join('');
+    weekTabsEl.innerHTML = weekDates.map((d, i) => {
+      const isToday = fmtDate(d) === todayStr;
+      return `<button class="week-tab${i === 0 ? ' active' : ''}${isToday ? ' today-tab' : ''}" onclick="selectWeekDay(this, ${i})">${fmtShort(d)}</button>`;
+    }).join('');
 
-    container.innerHTML = '<div class="loading-row"><div class="spinner"></div> 주간 급식 정보를 불러오는 중...</div>';
+    container.innerHTML = '<div class="loading-wrap"><div class="spinner"></div> 주간 급식 불러오는 중…</div>';
     await Promise.all(weekDates.map(d => fetchMeal(fmtDate(d))));
-
-    const rows = cache[fmtDate(weekDates[0])];
-    renderMeals(rows, container);
+    renderMeals(cache[fmtDate(weekDates[0])], container);
   }
 }
 
@@ -488,14 +570,12 @@ async function initSchoolCode() {
     const res = await fetch(url);
     const json = await res.json();
     const rows = json?.schoolInfo?.[1]?.row;
-    if (rows && rows.length > 0) {
+    if (rows?.length) {
       const matched = rows.find(r => r.SCHUL_NM === SCHUL_NAME) || rows[0];
       SCHUL_CODE = matched.SD_SCHUL_CODE;
     }
   } catch(e) {}
-  if (!SCHUL_CODE) {
-    SCHUL_CODE = '9022111';
-  }
+  if (!SCHUL_CODE) SCHUL_CODE = '7380058';
   render();
 }
 
